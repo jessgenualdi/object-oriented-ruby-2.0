@@ -35,6 +35,14 @@ class Employee
     @salary = 1.05 * @salary
   end
 
+  class Manager < Employee  
+    def send_report
+      puts "Sending Email..." 
+      # use email sending library
+      puts "Email sent!"
+    end
+  end
+
   def full_name
     if @last_name[-1] == "s"
       puts "#{@first_name} #{@last_name}, Esquire"
