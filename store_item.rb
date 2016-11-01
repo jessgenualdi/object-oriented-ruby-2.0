@@ -7,40 +7,58 @@ puts "Welcome to The Shoe Store!"
 # puts "#{shoe1[:shoe_type]} #{shoe1[:price]}"
 
 
+# class Shoe
+#   def initialize(input_shoe_type, input_gender, input_color, input_shoe_size, input_price)
+#     @shoe_type = input_shoe_type
+#     @gender = input_gender
+#     @color = input_color
+#     @shoe_size = input_shoe_size
+#     @price = input_price
+#   end
+
+#   def shoe_type
+#     @shoe_type
+#   end
+
+#   def gender
+#     @gender
+#   end
+
+#   def color
+#     @color
+#   end
+
+#   def shoe_size
+#     @shoe_size
+#   end
+
+#   def price
+#     @price
+#   end
+
+#   def print
+#     puts "Order info: #{@gender} #{@shoe_type} | #{@color} | #{@shoe_size} price: #{@price}"
+#   end
+# end
+
 class Shoe
-  def initialize(input_shoe_type, input_gender, input_color, input_shoe_size, input_price)
-    @shoe_type = input_shoe_type
-    @gender = input_gender
-    @color = input_color
-    @shoe_size = input_shoe_size
-    @price = input_price
+  attr_reader :shoe_type, :gender, :color, :size, :price
+
+  def initialize(input_options)
+    @shoe_type = input_options[:shoe_type]
+    @gender = input_options[:gender]
+    @color = input_options[:color]
+    @shoe_size = input_options[:size]
+    @price = input_options[:price]
   end
 
-  def shoe_type
-    @shoe_type
-  end
 
-  def gender
-    @gender
-  end
-
-  def color
-    @color
-  end
-
-  def shoe_size
-    @shoe_size
-  end
-
-  def price
-    @price
-  end
 
   def print
     puts "Order info: #{@gender} #{@shoe_type} | #{@color} | #{@shoe_size} price: #{@price}"
   end
 end
-
-shoe1 = Shoe.new("Boots", "Men's", "Black", 9, 50)
-
+puts
+shoe1 = Shoe.new(shoe_type: "Cowboy Boots", gender: "Men's", color: "Black and Blue", size: 13, price: 500)
 shoe1.print
+puts
