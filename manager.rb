@@ -24,7 +24,7 @@ class Employee
     @first_name = input_options[:first_name]
     @last_name = input_options[:last_name] 
     @salary = input_options[:salary]
-    @status = input_options[:status]
+    @active = input_options[:active]
   end
 
   def print_info
@@ -35,25 +35,56 @@ class Employee
     @salary = 1.05 * @salary
   end
 
-  class Manager < Employee  
-    def send_report
-      puts "Sending Email..." 
-      # use email sending library
-      puts "Email sent!"
-    end
+  def change_active_status
+    @active = false
   end
 
   def full_name
     if @last_name[-1] == "s"
-      puts "#{@first_name} #{@last_name}, Esquire"
+      puts "#{@first_name} #{@last_name}, Esquire status is #{@active}"
     else
-      puts "#{@first_name} #{@last_name}"
+      puts "#{@first_name} #{@last_name} status is #{@active}"
     end
   end
 end
 
+class Manager < Employee 
+  def initialize(input_options)
+    super(input_options)
+    @employees = input_options[:employees]
+  end
+
+  def give_all_raises
+    @employees.each do |employee|
+      employee.give_annual_raise
+    end
+  end
+
+  
+
+  def fire_everyone
+    @employees.each do |employee|
+      employee.change_active_status
+    end
+  end
+
+  def send_report
+    puts "Sending Email..." 
+    # use email sending library
+    puts "Email sent!"
+  end
+end
+
 employee1 = Employee.new({first_name: "Majora", last_name: "Carter", salary: 80000, active: true})
-employee2 = Employee.new( last_name: "Campos", salary: 70000, active: true)
+employee2 = Employee.new(first_name: "Danilo", last_name: "Campos", salary: 70000, active: true)
+
+manager = Manager.new(first_name: "Saron", last_name: "Yitbarek", salary: 100000, active: true, employees: [employee1, employee2])
+manager.print_info
+manager.send_report
+manager.give_all_raises
+manager.fire_everyone
+
+
 employee1.print_info
 employee2.print_info
 employee2.give_annual_raise
@@ -61,4 +92,9 @@ employee2.print_info
 
 puts employee1.full_name
 puts employee2.full_name
+
+p manager
+
+
+
 
