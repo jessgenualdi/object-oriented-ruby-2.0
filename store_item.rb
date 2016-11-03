@@ -66,6 +66,7 @@ class Shelf_life < Shoe
   end
 end
 
+
 puts
 shoe1 = Shelf_life.new(shoe_type: "Cowboy Boots", gender: "Men's", color: "Black and Blue", size: 13, price: 500, shelf_life: 30)
 shoe1.print
