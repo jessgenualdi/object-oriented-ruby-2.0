@@ -52,13 +52,21 @@ class Shoe
     @price = input_options[:price]
   end
 
-
-
   def print
-    puts "Order info: #{@gender} #{@shoe_type} | #{@color} | #{@shoe_size} price: #{@price}"
+    puts "Order info: #{@gender} #{@shoe_type} | #{@color} | #{@shoe_size} price: #{@price} #{@shelf_life} years"
   end
 end
+
+class Shelf_life < Shoe
+  attr_reader :shelf_life
+
+  def initialize(input_options)
+    super
+    @shelf_life = input_options[:shelf_life]
+  end
+end
+
 puts
-shoe1 = Shoe.new(shoe_type: "Cowboy Boots", gender: "Men's", color: "Black and Blue", size: 13, price: 500)
+shoe1 = Shelf_life.new(shoe_type: "Cowboy Boots", gender: "Men's", color: "Black and Blue", size: 13, price: 500, shelf_life: 30)
 shoe1.print
 puts
