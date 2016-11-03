@@ -58,6 +58,9 @@ class Shoe
     puts "Order info: #{@gender} #{@shoe_type} | #{@color} | #{@shoe_size} price: #{@price}"
   end
 end
+
+
+
 puts
 shoe1 = Shoe.new(shoe_type: "Cowboy Boots", gender: "Men's", color: "Black and Blue", size: 13, price: 500)
 shoe1.print
